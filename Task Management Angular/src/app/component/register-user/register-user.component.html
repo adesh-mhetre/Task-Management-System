@@ -1,0 +1,59 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Register</h2>
+            <form [formGroup]="registerUserForm" (ngSubmit)="registerUser()">
+              <div class="form-group mb-3">
+                <mat-form-field class="w-100">
+                  <mat-label>Name</mat-label>
+                  <input matInput id="name" name="name" formControlName="name" placeholder="Enter your name">
+                  </mat-form-field>
+                    <div *ngIf="registerUserForm.get('name')?.invalid && (registerUserForm.get('name')?.dirty || registerUserForm.get('name')?.touched)" class="text-danger">
+                      Name is required.
+                    </div>
+              </div>
+              <div class="form-group mb-3">
+                <mat-form-field class="w-100">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" id="email" name="email" formControlName="email" placeholder="Enter your email">
+                  </mat-form-field>
+                    <div *ngIf="registerUserForm.get('email')?.invalid && (registerUserForm.get('email')?.dirty || registerUserForm.get('email')?.touched)" class="text-danger">
+                      <div *ngIf="registerUserForm.get('email')?.errors" >Enter a valid email.</div>
+                    </div>
+              </div>
+              <div class="form-group mb-3">
+                <mat-form-field class="w-100">
+                  <mat-label>User Name</mat-label>
+                  <input matInput id="userName" name="userName" formControlName="userName" placeholder="Enter your user name">
+                  </mat-form-field>
+                    <div class="text-danger" *ngIf="registerUserForm.get('userName')?.invalid && (registerUserForm.get('userName')?.dirty || registerUserForm.get('userName')?.touched)">
+                      <div *ngIf="registerUserForm.get('userName')?.errors" >Username must be lowercase and can include numbers and underscores.</div>
+                    </div>
+              </div>
+              <div class="form-group mb-3">
+                <mat-form-field class="w-100">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" id="password" name="password" formControlName="password" placeholder="Enter your password">
+                  </mat-form-field>
+                    <div *ngIf="registerUserForm.get('password')?.invalid && (registerUserForm.get('password')?.dirty || registerUserForm.get('password')?.touched)" class="text-danger">
+                      Password is required.
+                    </div>
+              </div>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-50">Register</button>
+              </div>
+            </form>
+            <div class="text-center mt-3">
+              <button class="btn btn-link" routerLink="/">Login</button>
+            </div>
+            <div *ngIf="registerSuccess" class="alert alert-success mt-3">
+              User registered successfully. Please login.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
